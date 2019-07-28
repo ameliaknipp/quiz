@@ -1,7 +1,6 @@
-class ZombieController < ApplicationController
-
+class SuperherosController < ApplicationController
   def index
-    @superhero = Superhero.first
+    @superhero = Superhero.order("RANDOM()").first
   end
   
   def new
@@ -16,7 +15,8 @@ class ZombieController < ApplicationController
   private
 
   def superhero_params
-    params.require(:superheros).permit(:superhero, :superpower)
+    params.require(:superhero).permit(:name, :superpower)
   end
 
 end
+
